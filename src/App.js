@@ -13,14 +13,14 @@ class App extends Component {
     city: "",
     events: [],
     loading: false,
-    showInputWarning: false
+    showInputWarning: false,
   };
 
   searchEvent = city => {
     if (city.trim().length === 0) {
       this.setState({ showInputWarning: true });
     } else {
-      const token = `KG5NTEZQBDIWA3SAO6LE`;
+      const token = `IFUOLBX4XFZ5NCJY7EIO`;
       let apiUrl = `https://www.eventbriteapi.com/v3/events/search/?token=${token}&location.address=${city}`;
       this.setState({ loading: true }, () => {
         axios
@@ -53,7 +53,7 @@ class App extends Component {
       <div className="App">
         <Logo />
         <Navbar searchEvent={this.searchEvent} />
-        {this.state.showInputWarning ? <Warning /> : null}
+        {/* {this.state.showInputWarning ? <Warning /> : null} */}
         {this.state.loading ? (
           <LoadingSpinner />
         ) : (

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert } from "react-bootstrap";
+import { Alert, Button} from "react-bootstrap";
 
 export default function Warning() {
   const [show, setShow] = useState(true);
@@ -7,7 +7,7 @@ export default function Warning() {
     width: "50%",
     height: "10vh",
     marginLeft: "25%",
-    textAlign: "center",
+    textAlign: "center"
   };
   if (show) {
     return (

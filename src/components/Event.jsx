@@ -20,7 +20,7 @@ class Event extends Component {
           <Card.Body>
             <Card.Title
               style={{
-                fontWeight: "bold"
+                fontWeight: "bold",
               }}
             >
               {name.text}

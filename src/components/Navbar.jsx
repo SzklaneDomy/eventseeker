@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { InputGroup, FormControl, Button, Form } from "react-bootstrap";
+import { InputGroup, FormControl, Button, Form, Alert } from "react-bootstrap";
 
 class Navbar extends Component {
   state = {
-    city: ""
+    city: "",
+    isAlertOpen: false,
   };
 
   onChange = e => {
@@ -11,16 +12,24 @@ class Navbar extends Component {
   };
 
   onSubmit = e => {
+    if(this.state.city.trim().length === 0){
+      console.log('ada')
+      this.setState({isAlertOpen: true})
+    }
     e.preventDefault();
     this.props.searchEvent(this.state.city);
   };
+
+  toggle = () => {
+    this.setState({isAlertOpen: false})
+  }
   render() {
     return (
       <Form>
         <InputGroup
           size="sm"
           className="mb-3"
-          style={{ width: "50%", marginLeft: "25%" }}
+          style={{ width: "50%", marginLeft: "25%", minWidth: "220px" }}
         >
           <InputGroup.Prepend>
             <Button variant="primary" type="submit" onClick={this.onSubmit}>
@@ -36,6 +45,21 @@ class Navbar extends Component {
             aria-describedby="inputGroup-sizing-sm"
           />
         </InputGroup>
+        <Alert
+          variant="danger"
+          style={{
+            width: "50%",
+            height: "10vh",
+            marginLeft: "25%",
+            textAlign: "center"
+          }}
+          
+          show={this.state.isAlertOpen}
+          dismissible
+          onClose = {() => this.toggle()}
+        >
+          <Alert.Heading>Input can't be empty!</Alert.Heading>
+        </Alert>
       </Form>
     );
   }
