@@ -6,7 +6,6 @@ import Navbar from "./components/Navbar";
 import Logo from "./components/Logo";
 import EventList from "./components/EventList";
 import LoadingSpinner from "./components/LoadingSpinner";
-import Warning from "./components/Warning";
 
 class App extends Component {
   state = {
@@ -20,7 +19,6 @@ class App extends Component {
     if (city.trim().length === 0) {
       this.setState({ showInputWarning: true });
     } else {
-      //const token = process.env.REACT_APP_API_KEY;
       const ApiToken = process.env.REACT_APP_EVENTBRITE_API_KEY;
       let apiUrl = `https://www.eventbriteapi.com/v3/events/search/?token=${ApiToken}&location.address=${city}`;
       this.setState({ loading: true }, () => {
