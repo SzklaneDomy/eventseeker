@@ -20,8 +20,9 @@ class App extends Component {
     if (city.trim().length === 0) {
       this.setState({ showInputWarning: true });
     } else {
-      const token = `IFUOLBX4XFZ5NCJY7EIO`;
-      let apiUrl = `https://www.eventbriteapi.com/v3/events/search/?token=${token}&location.address=${city}`;
+      //const token = process.env.REACT_APP_API_KEY;
+      const ApiToken = process.env.REACT_APP_EVENTBRITE_API_KEY;
+      let apiUrl = `https://www.eventbriteapi.com/v3/events/search/?token=${ApiToken}&location.address=${city}`;
       this.setState({ loading: true }, () => {
         axios
           .get(apiUrl)
