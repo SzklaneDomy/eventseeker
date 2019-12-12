@@ -4,7 +4,7 @@ import Moment from "react-moment";
 
 class Event extends Component {
   render() {
-    let { summary, name, url, start } = this.props.event;
+    const { summary, name, url, start } = this.props.event;
     return (
       <div
         style={{

@@ -16,9 +16,6 @@ class App extends Component {
   };
 
   searchEvent = city => {
-    if (city.trim().length === 0) {
-      this.setState({ showInputWarning: true });
-    } else {
       const ApiToken = process.env.REACT_APP_EVENTBRITE_API_KEY;
       let apiUrl = `https://www.eventbriteapi.com/v3/events/search/?token=${ApiToken}&location.address=${city}`;
       this.setState({ loading: true }, () => {
@@ -44,7 +41,6 @@ class App extends Component {
           .catch(err => console.log(err));
       });
       console.log(this.state.events);
-    }
   };
 
   render() {

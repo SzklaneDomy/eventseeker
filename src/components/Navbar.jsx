@@ -4,7 +4,7 @@ import { InputGroup, FormControl, Button, Form, Alert } from "react-bootstrap";
 class Navbar extends Component {
   state = {
     city: "",
-    isAlertOpen: false,
+    isAlertOpen: false
   };
 
   onChange = e => {
@@ -12,17 +12,18 @@ class Navbar extends Component {
   };
 
   onSubmit = e => {
-    if(this.state.city.trim().length === 0){
-      console.log('ada')
-      this.setState({isAlertOpen: true})
+    if (this.state.city.trim().length === 0) {
+      e.preventDefault();
+      this.setState({ isAlertOpen: true });
+    } else {
+      e.preventDefault();
+      this.props.searchEvent(this.state.city);
     }
-    e.preventDefault();
-    this.props.searchEvent(this.state.city);
   };
 
   toggle = () => {
-    this.setState({isAlertOpen: false})
-  }
+    this.setState({ isAlertOpen: false });
+  };
   render() {
     return (
       <Form>
@@ -53,10 +54,9 @@ class Navbar extends Component {
             marginLeft: "25%",
             textAlign: "center"
           }}
-          
           show={this.state.isAlertOpen}
           dismissible
-          onClose = {() => this.toggle()}
+          onClose={() => this.toggle()}
         >
           <Alert.Heading>Input can't be empty!</Alert.Heading>
         </Alert>
