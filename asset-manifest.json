@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/static/css/main.3293ff3a.chunk.css",
-    "main.js": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/static/js/main.7875d118.chunk.js",
-    "main.js.map": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/static/js/main.7875d118.chunk.js.map",
-    "runtime~main.js": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/static/js/runtime~main.d00eb165.js",
-    "runtime~main.js.map": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/static/js/runtime~main.d00eb165.js.map",
-    "static/css/2.833dd627.chunk.css": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/static/css/2.833dd627.chunk.css",
-    "static/js/2.95081729.chunk.js": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/static/js/2.95081729.chunk.js",
-    "static/js/2.95081729.chunk.js.map": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/static/js/2.95081729.chunk.js.map",
-    "index.html": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/index.html",
-    "precache-manifest.166a7ddb00e0e6d2522c89f4c9e76b7e.js": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/precache-manifest.166a7ddb00e0e6d2522c89f4c9e76b7e.js",
-    "service-worker.js": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/service-worker.js",
-    "static/css/2.833dd627.chunk.css.map": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/static/css/2.833dd627.chunk.css.map",
-    "static/css/main.3293ff3a.chunk.css.map": "%7BSzklaneDomy%7D.github.io/%7Beventseeker%7D/static/css/main.3293ff3a.chunk.css.map"
+    "main.css": "/eventseeker/static/css/main.3293ff3a.chunk.css",
+    "main.js": "/eventseeker/static/js/main.94e79866.chunk.js",
+    "main.js.map": "/eventseeker/static/js/main.94e79866.chunk.js.map",
+    "runtime~main.js": "/eventseeker/static/js/runtime~main.e6bd4658.js",
+    "runtime~main.js.map": "/eventseeker/static/js/runtime~main.e6bd4658.js.map",
+    "static/css/2.833dd627.chunk.css": "/eventseeker/static/css/2.833dd627.chunk.css",
+    "static/js/2.95081729.chunk.js": "/eventseeker/static/js/2.95081729.chunk.js",
+    "static/js/2.95081729.chunk.js.map": "/eventseeker/static/js/2.95081729.chunk.js.map",
+    "index.html": "/eventseeker/index.html",
+    "precache-manifest.d03f72ee5b6da372e52e76df1ba26348.js": "/eventseeker/precache-manifest.d03f72ee5b6da372e52e76df1ba26348.js",
+    "service-worker.js": "/eventseeker/service-worker.js",
+    "static/css/2.833dd627.chunk.css.map": "/eventseeker/static/css/2.833dd627.chunk.css.map",
+    "static/css/main.3293ff3a.chunk.css.map": "/eventseeker/static/css/main.3293ff3a.chunk.css.map"
   }
 }
