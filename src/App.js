@@ -12,35 +12,26 @@ class App extends Component {
     city: "",
     events: [],
     loading: false,
-    showInputWarning: false,
+    showInputWarning: false
   };
 
   searchEvent = city => {
-      const ApiToken = process.env.REACT_APP_EVENTBRITE_API_KEY;
-      let apiUrl = `https://www.eventbriteapi.com/v3/events/search/?token=${ApiToken}&location.address=${city}`;
-      this.setState({ loading: true }, () => {
-        axios
-          .get(apiUrl)
-          .then(res => {
-            let sortedEvents = [];
-            (function() {
-              // Change date value to JS date object
-              res.data.events.forEach(event => {
-                event.start.utc = new Date(event.start.utc);
-                console.log(event.start.utc.getTime());
-              });
+    const apiTokenPredicthq = process.env.REACT_APP_PREDICTHQ_API_KEY;
 
-              // Sort Events by Date
-              sortedEvents = res.data.events.sort(
-                (event1, event2) =>
-                  event1.start.utc.getTime() - event2.start.utc.getTime()
-              );
-            })();
-            this.setState({ events: sortedEvents, loading: false });
-          })
-          .catch(err => console.log(err));
-      });
-      console.log(this.state.events);
+    let apiUrlPredicthq = `https://api.predicthq.com/v1/events/?q=${city}&sort=rank`;
+
+    this.setState({ loading: true }, () => {
+      axios({
+        method: "get",
+        url: apiUrlPredicthq,
+        headers: { Authorization: `Bearer ${apiTokenPredicthq}` }
+      })
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => console.log(err));
+    });
+    console.log(this.state.events);
   };
 
   render() {
