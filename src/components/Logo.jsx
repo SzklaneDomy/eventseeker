@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import "../index.css";
 
-export default function Logo() {
-  return (
-    <React.Fragment>
+class Logo extends Component {
+  render() {
+    return (
+      <React.Fragment>
         <h1
           style={{
             fontSize: "70px",
@@ -17,6 +18,9 @@ export default function Logo() {
         >
           Event Seeker
         </h1>
-    </React.Fragment>
-  );
+      </React.Fragment>
+    );
+  }
 }
+
+export default Logo;

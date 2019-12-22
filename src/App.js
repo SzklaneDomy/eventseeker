@@ -8,17 +8,25 @@ import EventList from "./components/EventList";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 class App extends Component {
-  state = {
-    city: "",
-    events: [],
-    loading: false,
-    showInputWarning: false
-  };
+  constructor(props) {
+    super(props);
 
-  searchEvent = city => {
+    this.searchEvent = this.searchEvent.bind(this);
+
+    this.state = {
+      city: "",
+      events: [],
+      loading: false,
+      showInputWarning: false
+    };
+  }
+
+  searchEvent(city) {
+    const todayDate = new Date().toISOString().slice(0 , 10)
+    
     const apiTokenPredicthq = process.env.REACT_APP_PREDICTHQ_API_KEY;
 
-    let apiUrlPredicthq = `https://api.predicthq.com/v1/events/?q=${city}&sort=rank`;
+    const apiUrlPredicthq = `https://api.predicthq.com/v1/events/?q=${city}&active.gte=${todayDate}&sort=start`;
 
     this.setState({ loading: true }, () => {
       axios({
@@ -27,19 +35,21 @@ class App extends Component {
         headers: { Authorization: `Bearer ${apiTokenPredicthq}` }
       })
         .then(res => {
-          console.log(res.data);
+          console.log(res.data.results);
+          this.setState({events: res.data.results,loading: false });
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err);
+          this.setState({ loading: false });
+        });
     });
-    console.log(this.state.events);
-  };
+  }
 
   render() {
     return (
       <div className="App">
         <Logo />
         <Navbar searchEvent={this.searchEvent} />
-        {/* {this.state.showInputWarning ? <Warning /> : null} */}
         {this.state.loading ? (
           <LoadingSpinner />
         ) : (
