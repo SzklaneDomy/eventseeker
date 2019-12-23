@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import {
-  Card,
-  Badge,
-  Accordion,
-  Button
-} from "react-bootstrap";
+import { Card, Badge, Accordion, Button } from "react-bootstrap";
 import Moment from "react-moment";
+import PropTypes from "prop-types";
 
 class Event extends Component {
   render() {
@@ -38,17 +34,17 @@ class Event extends Component {
             </Card.Title>
             <Card.Title>
               <Badge variant="info">
-                <Moment format="YYYY/MM/DD HH:mm">{start.local}</Moment>
+                <Moment format="YYYY/MM/DD HH:mm">{start}</Moment>
               </Badge>
             </Card.Title>
             <Card.Text></Card.Text>
             <Accordion>
-                  <Accordion.Toggle as={Button} variant="success" eventKey="0">
-                    More info!
-                  </Accordion.Toggle>
-                <Accordion.Collapse eventKey="0">
+              <Accordion.Toggle as={Button} variant="success" eventKey="0">
+                More info!
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
             <Card.Body>venue: {entities[0].name}</Card.Body>
-                </Accordion.Collapse>
+              </Accordion.Collapse>
             </Accordion>
           </Card.Body>
         </Card>
@@ -57,4 +53,13 @@ class Event extends Component {
   }
 }
 
+Event.propTypes = {
+  title: PropTypes.string,
+  start: PropTypes.string,
+  venue: PropTypes.string,
+};
+
+Event.defaultProps = {
+  venue: ' '
+}
 export default Event;

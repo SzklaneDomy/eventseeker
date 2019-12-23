@@ -22,11 +22,11 @@ class App extends Component {
   }
 
   searchEvent(city) {
-    const todayDate = new Date().toISOString().slice(0 , 10)
-    
+    const todayDate = new Date().toISOString().slice(0, 10);
+
     const apiTokenPredicthq = process.env.REACT_APP_PREDICTHQ_API_KEY;
 
-    const apiUrlPredicthq = `https://api.predicthq.com/v1/events/?q=${city}&active.gte=${todayDate}&sort=start`;
+    const apiUrlPredicthq = `https://api.predicthq.com/v1/events/?q=${city}&country=GB&active.gte=${todayDate}&sort=start`;
 
     this.setState({ loading: true }, () => {
       axios({
@@ -36,7 +36,16 @@ class App extends Component {
       })
         .then(res => {
           console.log(res.data.results);
-          this.setState({events: res.data.results,loading: false });
+          res.data.results.forEach(element => {
+            if (element.entities.length === 0) {
+              element.entities = [
+                {
+                  name: "not specified"
+                }
+              ]
+            }
+          });
+          this.setState({ events: res.data.results, loading: false });
         })
         .catch(err => {
           console.log(err);
