@@ -26,7 +26,7 @@ class App extends Component {
 
     const apiTokenPredicthq = process.env.REACT_APP_PREDICTHQ_API_KEY;
 
-    const apiUrlPredicthq = `https://api.predicthq.com/v1/events/?q=${city}&country=GB&active.gte=${todayDate}&sort=start`;
+    const apiUrlPredicthq = `https://api.predicthq.com/v1/events/?q=${city}&active.gte=${todayDate}&sort=start`;
 
     this.setState({ loading: true }, () => {
       axios({

@@ -32,7 +32,7 @@ class Navbar extends Component {
         <InputGroup
           size="sm"
           className="mb-3"
-          style={{ width: "50%", marginLeft: "25%", minWidth: "220px" }}
+          style={{ margin: "0 auto", width: "50%", minWidth: "220px" }}
         >
           <InputGroup.Prepend>
             <Button variant="primary" type="submit" onClick={this.onSubmit}>
