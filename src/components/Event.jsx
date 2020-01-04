@@ -23,7 +23,6 @@ class Event extends Component {
       isMapAccOpen: !this.state.isMapAccOpen,
       viewportSize: window.matchMedia("(min-width: 768px)").matches
     });
-    const text = `asd${"asd"}`;
   };
 
   render() {
