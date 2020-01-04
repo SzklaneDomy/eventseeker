@@ -13,6 +13,13 @@ import PropTypes from "prop-types";
 import MapComponent from "./MapComponent";
 
 class Event extends Component {
+  state = {
+    isMapAccOpen: false
+  };
+
+  toggleMapAcc = () => {
+    this.setState({ isMapAccOpen: !this.state.isMapAccOpen });
+  };
   render() {
     const { title, start, entities, end } = this.props.event;
     return (
@@ -53,10 +60,16 @@ class Event extends Component {
               <Accordion.Collapse eventKey="0">
                 <Card.Body>
                   <Accordion>
-                    <Accordion.Toggle as={Card.Text} eventKey="1">
+                    <Accordion.Toggle
+                      as={Card.Text}
+                      eventKey="1"
+                      onClick={() => this.toggleMapAcc()}
+                    >
                       <OverlayTrigger
                         overlay={
-                          <Tooltip id="tooltip-disabled">Click to show map!</Tooltip>
+                          <Tooltip id="tooltip-disabled">
+                            Click to show map!
+                          </Tooltip>
                         }
                       >
                         <Card.Text>
@@ -66,7 +79,11 @@ class Event extends Component {
                       </OverlayTrigger>
                     </Accordion.Toggle>
                     <Accordion.Collapse eventKey="1">
-                      <Card.Body>Hello! I'm the body</Card.Body>
+                      <Card.Body>
+                        {this.state.isMapAccOpen ? (
+                          <MapComponent mapData={this.props.event} />
+                        ) : null}
+                      </Card.Body>
                     </Accordion.Collapse>
                   </Accordion>
                   <Card.Text>
@@ -87,4 +104,5 @@ Event.propTypes = {
   title: PropTypes.string,
   start: PropTypes.string
 };
+
 export default Event;

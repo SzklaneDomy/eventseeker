@@ -8,20 +8,15 @@ import EventList from "./components/EventList";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
 
-    this.searchEvent = this.searchEvent.bind(this);
-
-    this.state = {
+  state = {
       city: "",
       events: [],
       loading: false,
       showInputWarning: false
     };
-  }
 
-  searchEvent(city) {
+   searchEvent = (city) => {
     const todayDate = new Date().toISOString().slice(0, 10);
 
     const apiTokenPredicthq = process.env.REACT_APP_PREDICTHQ_API_KEY;
@@ -35,7 +30,6 @@ class App extends Component {
         headers: { Authorization: `Bearer ${apiTokenPredicthq}` }
       })
         .then(res => {
-          console.log(res.data.results);
           res.data.results.forEach(element => {
             if (element.entities.length === 0) {
               element.entities = [
