@@ -14,14 +14,20 @@ import MapComponent from "./MapComponent";
 
 class Event extends Component {
   state = {
-    isMapAccOpen: false
+    isMapAccOpen: false,
+    viewportSize: window.matchMedia("(min-width: 768px)").matches
   };
 
   toggleMapAcc = () => {
-    this.setState({ isMapAccOpen: !this.state.isMapAccOpen });
+    this.setState({
+      isMapAccOpen: !this.state.isMapAccOpen,
+      viewportSize: window.matchMedia("(min-width: 768px)").matches
+    });
+    const text = `asd${"asd"}`;
   };
+
   render() {
-    const { title, start, entities, end } = this.props.event;
+    const { title, start, entities, end, location } = this.props.event;
     return (
       <div
         style={{
@@ -81,7 +87,18 @@ class Event extends Component {
                     <Accordion.Collapse eventKey="1">
                       <Card.Body>
                         {this.state.isMapAccOpen ? (
-                          <MapComponent mapData={this.props.event} />
+                          this.state.viewportSize ? (
+                            <MapComponent mapData={this.props.event} />
+                          ) : (
+                            <Card.Text>
+                              <a
+                                href={`https://www.openstreetmap.org/?mlat=${location[1]}&mlon=${location[0]}#map=15/${location[1]}/${location[0]}`}
+                                target="_blank"
+                              >
+                                Click to show map!
+                              </a>
+                            </Card.Text>
+                          )
                         ) : null}
                       </Card.Body>
                     </Accordion.Collapse>
