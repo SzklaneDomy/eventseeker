@@ -8,15 +8,14 @@ import EventList from "./components/EventList";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 class App extends Component {
-
   state = {
-      city: "",
-      events: [],
-      loading: false,
-      showInputWarning: false
-    };
+    city: "",
+    events: [],
+    loading: false,
+    showInputWarning: false
+  };
 
-   searchEvent = (city) => {
+  searchEvent = city => {
     const todayDate = new Date().toISOString().slice(0, 10);
 
     const apiTokenPredicthq = process.env.REACT_APP_PREDICTHQ_API_KEY;
@@ -36,7 +35,7 @@ class App extends Component {
                 {
                   name: "not specified"
                 }
-              ]
+              ];
             }
           });
           this.setState({ events: res.data.results, loading: false });
@@ -46,7 +45,7 @@ class App extends Component {
           this.setState({ loading: false });
         });
     });
-  }
+  };
 
   render() {
     return (

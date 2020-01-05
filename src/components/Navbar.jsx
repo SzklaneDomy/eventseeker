@@ -8,7 +8,7 @@ class Navbar extends Component {
   };
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value});
+    this.setState({ [e.target.name]: e.target.value });
     this.toggle();
   };
 
@@ -24,7 +24,6 @@ class Navbar extends Component {
 
   toggle = () => {
     this.setState({ isAlertOpen: false });
-
   };
   render() {
     return (
@@ -58,7 +57,7 @@ class Navbar extends Component {
           }}
           show={this.state.isAlertOpen}
           dismissible
-          onClick={() => this.toggle()}
+          onClick={this.toggle}
         >
           <Alert.Heading>Input can't be empty!</Alert.Heading>
         </Alert>

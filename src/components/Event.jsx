@@ -68,7 +68,7 @@ class Event extends Component {
                     <Accordion.Toggle
                       as={Card.Text}
                       eventKey="1"
-                      onClick={() => this.toggleMapAcc()}
+                      onClick={this.toggleMapAcc}
                     >
                       <OverlayTrigger
                         overlay={
