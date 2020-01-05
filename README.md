@@ -1,6 +1,6 @@
 ## Event Seeker
 
-Event seeking aplication build using React, axios, react-bootstrap and react-map-gl.
+Event seeking aplication built using React, axios, react-bootstrap and react-map-gl.
 Data about events is fetched from PredictHQ API.
 
 👁️ https://szklanedomy.github.io/eventseeker/ 👁️
