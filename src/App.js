@@ -6,13 +6,15 @@ import Navbar from "./components/Navbar";
 import Logo from "./components/Logo";
 import EventList from "./components/EventList";
 import LoadingSpinner from "./components/LoadingSpinner";
+import FavouriteList from "./components/FavouriteList";
 
 class App extends Component {
   state = {
     city: "",
     events: [],
     loading: false,
-    showInputWarning: false
+    showInputWarning: false,
+    favouriteEvents: [],
   };
 
   searchEvent = city => {
@@ -47,6 +49,10 @@ class App extends Component {
     });
   };
 
+  favouriteEvent = e => {
+    console.log(e)
+  }
+
   render() {
     return (
       <div className="App">
@@ -55,7 +61,7 @@ class App extends Component {
         {this.state.loading ? (
           <LoadingSpinner />
         ) : (
-          <EventList events={this.state.events} />
+          <EventList events={this.state.events} favouriteEvent={this.favouriteEvent}/>
         )}
       </div>
     );

@@ -14,6 +14,7 @@ import MapComponent from "./MapComponent";
 
 class Event extends Component {
   state = {
+    isFavourite: false,
     isMapAccOpen: false,
     viewportSize: window.matchMedia("(min-width: 768px)").matches
   };
@@ -23,6 +24,11 @@ class Event extends Component {
       isMapAccOpen: !this.state.isMapAccOpen,
       viewportSize: window.matchMedia("(min-width: 768px)").matches
     });
+  };
+
+  toggleFavouriteEvent = () => {
+    this.setState({isFavourite: !this.state.isFavourite})
+    this.props.favouriteEvent({isFavourite: this.state.isFavourite ,...this.props.event});
   };
 
   render() {
@@ -43,9 +49,7 @@ class Event extends Component {
             fontFamily: "'Montserrat', sans-serif"
           }}
         >
-          <Card.Img variant="top" />
           <Card.Body>
-            {/* <MapComponent  mapData = {this.props.event}/> */}
             <Card.Title
               style={{
                 fontWeight: "bold"
@@ -53,15 +57,21 @@ class Event extends Component {
             >
               {title}
             </Card.Title>
-            <Card.Title>
+            <Card.Text>
               <Badge variant="info">start:</Badge>{" "}
               <Moment format="YYYY/MM/DD HH:mm">{start}</Moment>
-            </Card.Title>
-            <Card.Text></Card.Text>
+            </Card.Text>
             <Accordion>
               <Accordion.Toggle as={Button} variant="success" eventKey="0">
                 More info
-              </Accordion.Toggle>
+              </Accordion.Toggle>{" "}
+              <Button
+                style={{ alignItems: "right" }}
+                variant="danger"
+                onClick={this.toggleFavouriteEvent}
+              >
+                ❤️
+              </Button>
               <Accordion.Collapse eventKey="0">
                 <Card.Body>
                   <Accordion>
