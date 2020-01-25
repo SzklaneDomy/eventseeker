@@ -50,12 +50,14 @@ class App extends Component {
   };
 
   favouriteEvent = e => {
-    console.log(e)
+    this.setState({favouriteEvents: [...this.state.favouriteEvents, e]})
+    console.log(this.state);
   }
 
   render() {
     return (
       <div className="App">
+        <FavouriteList favouriteEvents={this.state.favouriteEvents}/>
         <Logo />
         <Navbar searchEvent={this.searchEvent} />
         {this.state.loading ? (
