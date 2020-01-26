@@ -8,29 +8,45 @@ import {
   OverlayTrigger
 } from "react-bootstrap";
 
-import FavouriteEvent from './FavouriteEvent'
+import FavouriteEvent from "./FavouriteEvent";
+import "../css/FavouriteList.css";
 
 export default class FavouriteList extends Component {
+  state = {
+    hideNav: false,
+  };
+
+  wrapperRef = React.createRef();
+  arrowRef = React.createRef();
+
+  slideFavList = () => {
+    const wrapper = this.wrapperRef.current;
+    const favarrow = this.arrowRef.current;
+    wrapper.classList.toggle("is-acc-open");
+    favarrow.classList.toggle("is-acc-open")
+  };
   render() {
     return (
-      <div style={{width: "20%",position: "fixed", right: "10px",top: "10px"}}>
-        <Accordion>
-          <Card>
-            <Accordion.Toggle as={Card.Header} eventKey="0">
-              Click to see ❤️ events!
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="0">
-              <Card.Body>
+      <div ref={this.wrapperRef} className="wrapper">
+        <div ref={this.arrowRef} className="fav-arrow" onClick={() => this.slideFavList(this)}>
+          <img src="https://img.icons8.com/material-sharp/48/000000/chevron-left.png" />
+        </div>
+        <div className="fav-accordion">
+          <Accordion>
+            <Card>
+              <Accordion.Toggle as={Card.Header} eventKey="0">
+                Click to see ❤️ events!
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body>
                   {this.props.favouriteEvents.map(favEvent => (
-                      <FavouriteEvent 
-                        key={favEvent.id}
-                        event={favEvent}
-                      />
+                    <FavouriteEvent key={favEvent.id} event={favEvent} />
                   ))}
-              </Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        </Accordion>
+                </Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+        </div>
       </div>
     );
   }
