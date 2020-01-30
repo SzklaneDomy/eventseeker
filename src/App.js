@@ -7,6 +7,7 @@ import Logo from "./components/Logo";
 import EventList from "./components/EventList";
 import LoadingSpinner from "./components/LoadingSpinner";
 import FavouriteList from "./components/FavouriteList";
+import "./App.css";
 
 class App extends Component {
   state = {
@@ -14,7 +15,7 @@ class App extends Component {
     events: [],
     loading: false,
     showInputWarning: false,
-    favouriteEvents: [],
+    favouriteEvents: []
   };
 
   searchEvent = city => {
@@ -50,20 +51,37 @@ class App extends Component {
   };
 
   favouriteEvent = e => {
-    this.setState({favouriteEvents: [...this.state.favouriteEvents, e]})
-    console.log(this.state);
-  }
+    this.setState({ favouriteEvents: [...this.state.favouriteEvents, e] });
+  };
+
+  handleBackgroundBlurred = isBlurred => {
+    
+  };
+
+  handleDelete = id => {
+    this.setState({
+      favouriteEvents: this.state.favouriteEvents.filter(el => (el.id !== id))
+    })
+  };
 
   render() {
     return (
       <div className="App">
-        <FavouriteList favouriteEvents={this.state.favouriteEvents}/>
+        <FavouriteList
+          favouriteEvents={this.state.favouriteEvents}
+          isBackgroundBlurred={this.isBackgroundBlurred}
+          deleteEvent={this.handleDelete}
+          handleBlurredBackground={this.handleBlurredBackground}
+        />
         <Logo />
         <Navbar searchEvent={this.searchEvent} />
         {this.state.loading ? (
           <LoadingSpinner />
         ) : (
-          <EventList events={this.state.events} favouriteEvent={this.favouriteEvent}/>
+          <EventList
+            events={this.state.events}
+            favouriteEvent={this.favouriteEvent}
+          />
         )}
       </div>
     );

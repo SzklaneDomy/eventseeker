@@ -1,13 +1,13 @@
 .wrapper {
   top: 10px;
   right: -210px;
-  z-index: 1;
+  z-index: 999;
   position: fixed;
   transition: 0.5s ease-in-out;
 }
 
 .wrapper.is-acc-open {
- right: 10px;
+  right: 10px;
 }
 
 .fav-arrow {
@@ -25,4 +25,10 @@
 .fav-accordion {
   overflow: hidden;
   float: left;
+  max-width: 210px;
+}
+
+.fav-accordion-body {
+  overflow-y: scroll;
+  max-height: 90vh;
 }
