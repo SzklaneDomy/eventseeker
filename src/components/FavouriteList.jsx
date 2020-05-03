@@ -5,7 +5,7 @@ import {
   Accordion,
   Button,
   Tooltip,
-  OverlayTrigger
+  OverlayTrigger,
 } from "react-bootstrap";
 
 import FavouriteEvent from "./FavouriteEvent";
@@ -14,7 +14,6 @@ import "../css/FavouriteList.css";
 export default class FavouriteList extends Component {
   state = {
     hideNav: false,
-    isBackgroundBlurred: false
   };
 
   wrapperRef = React.createRef();
@@ -25,8 +24,6 @@ export default class FavouriteList extends Component {
     const favarrow = this.arrowRef.current;
     wrapper.classList.toggle("is-acc-open");
     favarrow.classList.toggle("is-acc-open");
-    this.setState({ isBackgroundBlurred: !this.isBackgroundBlurred });
-    this.props.handleBlurredBackground(this.state.isBackgroundBlurred)
   };
   render() {
     return (
@@ -46,7 +43,7 @@ export default class FavouriteList extends Component {
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0" className="fav-accordion-body">
                 <Card.Body>
-                  {this.props.favouriteEvents.map(favEvent => (
+                  {this.props.favouriteEvents.map((favEvent) => (
                     <FavouriteEvent
                       key={favEvent.id}
                       event={favEvent}

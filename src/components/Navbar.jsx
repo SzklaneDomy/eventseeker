@@ -42,7 +42,7 @@ class Navbar extends Component {
             value={this.state.value}
             onChange={this.onChange}
             name="city"
-            placeholder="Put in your city name"
+            placeholder="What events are you looking for ? Food, Concerts?"
             aria-label="Small"
             aria-describedby="inputGroup-sizing-sm"
           />

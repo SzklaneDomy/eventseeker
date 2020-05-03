@@ -15,53 +15,49 @@ class App extends Component {
     events: [],
     loading: false,
     showInputWarning: false,
-    favouriteEvents: []
+    favouriteEvents: [],
   };
 
-  searchEvent = city => {
+  searchEvent = (city) => {
     const todayDate = new Date().toISOString().slice(0, 10);
 
     const apiTokenPredicthq = process.env.REACT_APP_PREDICTHQ_API_KEY;
 
-    const apiUrlPredicthq = `https://api.predicthq.com/v1/events/?q=${city}&country=GB&active.gte=${todayDate}&sort=start`;
+    const apiUrlPredicthq = `https://api.predicthq.com/v1/events/?q=${city}&active.gte=${todayDate}&sort=start`;
 
     this.setState({ loading: true }, () => {
       axios({
         method: "get",
         url: apiUrlPredicthq,
-        headers: { Authorization: `Bearer ${apiTokenPredicthq}` }
+        headers: { Authorization: `Bearer ${apiTokenPredicthq}` },
       })
-        .then(res => {
-          res.data.results.forEach(element => {
+        .then((res) => {
+          res.data.results.forEach((element) => {
             if (element.entities.length === 0) {
               element.entities = [
                 {
-                  name: "not specified"
-                }
+                  name: "not specified",
+                },
               ];
             }
           });
           this.setState({ events: res.data.results, loading: false });
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
           this.setState({ loading: false });
         });
     });
   };
 
-  favouriteEvent = e => {
+  favouriteEvent = (e) => {
     this.setState({ favouriteEvents: [...this.state.favouriteEvents, e] });
   };
 
-  handleBackgroundBlurred = isBlurred => {
-    
-  };
-
-  handleDelete = id => {
+  handleDelete = (id) => {
     this.setState({
-      favouriteEvents: this.state.favouriteEvents.filter(el => (el.id !== id))
-    })
+      favouriteEvents: this.state.favouriteEvents.filter((el) => el.id !== id),
+    });
   };
 
   render() {
